@@ -9,7 +9,7 @@ export const CollectionsPage = () => {
 
   return (
     <>
-      <div>{isLoading && "loading"}</div>
+      <div>{isLoading && "Loading Collections"}</div>
       <button disabled={isLoading || !startInclusive} onClick={prevPage}>
         Prev
       </button>

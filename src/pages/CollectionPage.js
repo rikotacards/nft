@@ -1,11 +1,25 @@
-import React from 'react'
+import React from "react";
+import { useParams } from "react-router";
+import { Nft } from "../components/Nft/Nft";
+import { useGetCollection } from "../hooks/useGetCollection";
 // displays all nfts per collection
-https://ftx.us/api/nft/nfts_filtered?nft_filter_string={"collection":"Bored Ape Yacht Club"}
-https://ftx.us/api/nft/nfts_filtered?nft_filter_string=%27{%22collection%22:%22bored%20ape%20yacht%20club%22}%27
-export const Collection = () => {
-  return (
-    <div>
+export const CollectionPage = () => {
+  const params = useParams();
 
-    </div>
-  )
-}
+  const { data, nextPage, prevPage, isLoading, startInclusive } =
+    useGetCollection(params.collectionName);
+  const nfts = data.map((nft) => <Nft {...nft} />);
+  return (
+    <>
+      {params.collectioName}
+      <div>{isLoading && "loading"}</div>
+      <button disabled={isLoading || !startInclusive} onClick={prevPage}>
+        Prev
+      </button>
+      <button disabled={isLoading} onClick={nextPage}>
+        next
+      </button>
+      {nfts}
+    </>
+  );
+};
