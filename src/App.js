@@ -1,22 +1,20 @@
 import React from "react";
 import { CollectionsPage } from "./pages/CollectionsPage";
 import { CollectionPage } from "./pages/CollectionPage";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
-import { AppBar, CssBaseline } from "@mui/material";
+import {  CssBaseline } from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
-
+import { TopAppBar } from "./components/TopAppBar/TopAppBar";
 export const App = () => {
+  
   return (
     <BrowserRouter>
       <React.Fragment>
-        <AppBar position="fixed">
-          <CssBaseline />
-          <Toolbar>FTX NFT</Toolbar>
-        </AppBar>
-        <Toolbar />
+        <TopAppBar/>
+       <CssBaseline/>
+       <Toolbar />
       </React.Fragment>
         <Routes pa>
           <Route path="/" element={<CollectionsPage />} />
