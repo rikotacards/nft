@@ -1,7 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import React from "react";
 
-function App() {
+export const endpoint = "http://localhost:8010/proxy/api/nft/collections_page";
+
+export const App = () => {
+  React.useEffect(() => {
+    fetch(endpoint).then((res) => {
+      if (res.ok) {
+        console.log(res)
+        return res.json()
+      }
+    }).then((data) => {
+      console.log('data', data)
+    })
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +34,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;
