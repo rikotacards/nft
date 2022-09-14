@@ -7,7 +7,7 @@ export const Collection = (props) => {
 
   return (
     <div style={{border: '1px solid black', maxWidth: '100px', width: '100%'}}>
-      <img  src={collectionDict?.avatarImageUrl} />
+      <img style={{maxWidth: '100px'}}  src={collectionDict?.avatarImageUrl} />
       <div>
         <div>
           group id
