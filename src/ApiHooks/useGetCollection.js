@@ -1,22 +1,22 @@
 import React from 'react';
-const step = 30
+import { STEP } from '../config/paginationStep';
 export const useGetCollection = (nftFilterString) => {
   React.useEffect(() => {
   }, [nftFilterString])
   const [payload, setPayload ] = React.useState({})
   const [isLoading, setLoading] = React.useState(false);
   const [startInclusive, setStart] = React.useState(0);
-  const [endExclusive, setEnd] = React.useState(step);
+  const [endExclusive, setEnd] = React.useState(STEP);
   const [hasError, setError] = React.useState(false);
   const endpoint = `http://localhost:8010/proxy/api/nft/nfts_filtered?startInclusive=${startInclusive}&endExclusive=${endExclusive}&nft_filter_string=${JSON.stringify({collection: nftFilterString})}`;
   
   const nextPage = () => {
     setStart(endExclusive)
-    setEnd(endExclusive + step)
+    setEnd(endExclusive + STEP)
   }
   const prevPage = () => {
-    setStart(startInclusive - step)
-    setEnd(endExclusive - step)
+    setStart(startInclusive - STEP)
+    setEnd(endExclusive - STEP)
   }
   React.useEffect(() => {
     setLoading(true)
