@@ -1,21 +1,21 @@
 import React from 'react';
-const step = 30
+import { STEP } from '../config/paginationStep';
 export const useGetCollections = (collectionType) => {
   const [data, setData ] = React.useState([])
   const [total, setTotal] = React.useState(0)
   const [hasError, setError] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
   const [startInclusive, setStart] = React.useState(0);
-  const [endExclusive, setEnd] = React.useState(step);
+  const [endExclusive, setEnd] = React.useState(STEP);
   const endpoint = `http://localhost:8010/proxy/api/nft/collections_page?startInclusive=${startInclusive}&endExclusive=${endExclusive}&collectionType=${collectionType}`;
   
   const nextPage = () => {
     setStart(endExclusive)
-    setEnd(endExclusive + step)
+    setEnd(endExclusive + STEP)
   }
   const prevPage = () => {
-    setStart(startInclusive - step)
-    setEnd(endExclusive - step)
+    setStart(startInclusive - STEP)
+    setEnd(endExclusive - STEP)
   }
   React.useEffect(() => {
     setLoading(true)
