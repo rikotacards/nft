@@ -9,7 +9,6 @@ export const CollectionPage = () => {
 
   const { data, nextPage, prevPage, isLoading, startInclusive } =
     useGetCollection(params.collectionName);
-  const nfts = data.map((nft) => <Nft {...nft} />);
   return (
     <>
       {params.collectioName}
@@ -20,7 +19,7 @@ export const CollectionPage = () => {
       <button disabled={isLoading} onClick={nextPage}>
         next
       </button>
-      {!isLoading && <Gallery data={data} GalleryItemWrapper={Nft}/>}
+      {!isLoading && <Gallery data={data} GalleryItemWrapper={Nft} />}
     </>
   );
 };
