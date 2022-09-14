@@ -11,10 +11,11 @@ export const App = () => {
     <BrowserRouter>
       <div className="App">
         <Routes pa>
-          <Route path="/" element={<CollectionsPage />}>
-
-          </Route>
-          <Route path="/collection/:collectionName" element={<CollectionPage />}></Route>
+          <Route path="/" element={<CollectionsPage />}/>
+          <Route
+            path="/collection/:collectionName"
+            element={<CollectionPage />}
+          ></Route>
         </Routes>
       </div>
     </BrowserRouter>

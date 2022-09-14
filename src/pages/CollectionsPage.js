@@ -1,5 +1,6 @@
 import React from "react";
-import { Collections } from "../components/Collections/Collections";
+import { Collection } from "../components/Collection/Collection";
+import { Gallery } from "../components/Gallery/Gallery";
 import { useGetCollections } from "../hooks/useGetCollections";
 
 // shows various collections
@@ -18,7 +19,7 @@ export const CollectionsPage = () => {
       </button>
       
 
-      {!isLoading && <Collections data={data} />}
+      {!isLoading && < Gallery GalleryItemWrapper={Collection} data={data} />}
     </>
   );
 };
