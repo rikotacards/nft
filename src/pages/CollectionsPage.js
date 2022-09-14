@@ -1,22 +1,21 @@
 import React from 'react';
-export const endpoint = "http://localhost:8010/proxy/api/nft/collections_page?startInclusive=0&endExclusive=5";
+import { Collection } from '../components/Collection/Collection';
+import { Collections } from '../components/Collections/Collections';
+import { useGetCollections } from '../hooks/useGetCollections';
 
 // shows various collections
 
 export const CollectionsPage = () => {
-  React.useEffect(() => {
-    console.log('use Effect called')
-    fetch(endpoint).then((res) => {
-      if (res.ok) {
-        console.log(res)
-        return res.json()
-      }
-    }).then((data) => {
-      console.log('data', data)
-    })
-  }, []);
+  const {data, nextPage, prevPage, isLoading} = useGetCollections()
+  console.log('get data', data)
+  
   return (
     <>
+    {isLoading && 'loading' }
+    <button disabled={isLoading} onClick={nextPage}>next</button>
+    <button onClick={prevPage}>Prev</button>
+
+    {!isLoading && <Collections data={data}/>}
     </>
   )
 }

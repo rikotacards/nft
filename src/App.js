@@ -1,5 +1,6 @@
 import React from "react";
 import { CollectionsPage } from "./pages/CollectionsPage";
+import "./App.css";
 
 
 export const App = () => {
