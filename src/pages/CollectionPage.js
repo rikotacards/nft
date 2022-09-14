@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router";
+import { Gallery } from "../components/Gallery/Gallery";
 import { Nft } from "../components/Nft/Nft";
 import { useGetCollection } from "../hooks/useGetCollection";
 // displays all nfts per collection
@@ -19,7 +20,7 @@ export const CollectionPage = () => {
       <button disabled={isLoading} onClick={nextPage}>
         next
       </button>
-      {nfts}
+      {!isLoading && <Gallery data={data} GalleryItemWrapper={Nft}/>}
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
- 
+
 export const Nft = (props) => {
   const { name, description, imageUrl } = props;
   return (
@@ -9,7 +9,7 @@ export const Nft = (props) => {
         <div>{name}</div>
       </div>
       <div>
-        <img style={{ maxWidth: "100px" }} src={imageUrl} />
+        <img alt={name} style={{ maxWidth: "100px" }} src={imageUrl} />
       </div>
       <div>
         <div>desc:</div>
