@@ -3,7 +3,6 @@ import { CollectionsPage } from "./pages/CollectionsPage";
 import { CollectionPage } from "./pages/CollectionPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import "./App.css";
 import {  CssBaseline } from "@mui/material";
 import Toolbar from "@mui/material/Toolbar";
 import { TopAppBar } from "./components/TopAppBar/TopAppBar";
