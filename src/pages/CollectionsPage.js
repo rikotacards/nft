@@ -2,27 +2,28 @@ import { Button, LinearProgress, Typography } from "@mui/material";
 import React from "react";
 import { Collection } from "../components/Collection/Collection";
 import { Gallery } from "../components/Gallery/Gallery";
-import { useGetCollections } from "../hooks/useGetCollections";
+import { useGetCollections } from "../ApiHooks/useGetCollections";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { collectionTypes } from "../config/collectionTypes.data";
 
 // shows various collections
 
 export const CollectionsPage = () => {
-  const { data, nextPage, prevPage, isLoading, startInclusive } =
-    useGetCollections();
-  const [age, setAge] = React.useState("");
-
+  
+  const [collectionType, setCollectionType] = React.useState("");
+  const { data, nextPage, prevPage, isLoading, startInclusive, total } =
+  useGetCollections(collectionType);
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setCollectionType(event.target.value);
   };
 
   return (
     <div>
-      <Typography variant="h4">Collections</Typography>
+      <Typography variant="h4">Collections ({total})</Typography>
       {isLoading && <div>{"Loading Collections"}</div>}
       {isLoading && <div>{<LinearProgress />}</div>}
       <div>
@@ -35,17 +36,16 @@ export const CollectionsPage = () => {
       </div>
       <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <InputLabel id="demo-simple-select-label">Collection Type</InputLabel>
           <Select
+          disabled={isLoading}
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={age}
-            label="Age"
+            value={collectionType}
+            label="Collection Type"
             onChange={handleChange}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            {collectionTypes.map((type, i) => <MenuItem key={type+i} value={type}>{type}</MenuItem>)}
           </Select>
         </FormControl>
       </Box>

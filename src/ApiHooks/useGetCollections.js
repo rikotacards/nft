@@ -1,11 +1,13 @@
 import React from 'react';
 const step = 30
-export const useGetCollections = () => {
+export const useGetCollections = (collectionType) => {
   const [data, setData ] = React.useState([])
+  const [total, setTotal] = React.useState(0)
+  const [hasError, setError] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
   const [startInclusive, setStart] = React.useState(0);
   const [endExclusive, setEnd] = React.useState(step);
-  const endpoint = `http://localhost:8010/proxy/api/nft/collections_page?startInclusive=${startInclusive}&endExclusive=${endExclusive}`;
+  const endpoint = `http://localhost:8010/proxy/api/nft/collections_page?startInclusive=${startInclusive}&endExclusive=${endExclusive}&collectionType=${collectionType}`;
   
   const nextPage = () => {
     setStart(endExclusive)
@@ -22,10 +24,13 @@ export const useGetCollections = () => {
         return res.json()
       }
     }).then((data) => {
-      
-      console.log('all', data?.result?.collections)
+      console.log('getting data', data)
       setData(data?.result?.collections)
+      setTotal(data?.result?.count)
       setLoading(false)
+      setError(false)
+    }).catch((e) => {
+      setError(true)
     })
   }, [endpoint]);
   return {
@@ -33,6 +38,8 @@ export const useGetCollections = () => {
     data,
     nextPage,
     prevPage,
-    isLoading
+    isLoading,
+    total,
+    hasError
   }
 }
