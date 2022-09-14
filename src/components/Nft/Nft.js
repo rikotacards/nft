@@ -1,5 +1,5 @@
 import React from "react";
-
+ 
 export const Nft = (props) => {
   const { name, description, imageUrl } = props;
   return (

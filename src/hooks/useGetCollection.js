@@ -21,13 +21,10 @@ console.log('inEffect', nftFilterString)
   React.useEffect(() => {
     setLoading(true)
     fetch(endpoint).then((res) => {
-      console.log('e', endpoint)
       if (res.ok) {
         return res.json()
       }
     }).then((data) => {
-      
-      console.log('THE COLLECTION', data?.result?.nfts)
       setData(data?.result?.nfts)
       setLoading(false)
     })

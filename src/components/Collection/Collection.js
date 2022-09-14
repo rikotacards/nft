@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 
 // individual collection
 export const Collection = (props) => {
-  const { collectionDict, first_nft, group_id, group_type, total, volume } =
+  const { collectionDict, group_id, group_type, total, volume } =
     props;
     const navigate = useNavigate();
     const onClick = React.useCallback(() => navigate(`/collection/${group_id}`, {replace: false}), [navigate]);
@@ -17,6 +17,22 @@ export const Collection = (props) => {
         </div>
         <div>
           {group_id}
+        </div>
+      </div>
+      <div>
+        <div>
+          total
+        </div>
+        <div>
+          {total}
+        </div>
+      </div>
+      <div>
+        <div>
+          volume
+        </div>
+        <div>
+          {volume}
         </div>
       </div>
     </div>
