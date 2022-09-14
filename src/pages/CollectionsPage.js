@@ -5,12 +5,12 @@ import { useGetCollections } from "../hooks/useGetCollections";
 // shows various collections
 
 export const CollectionsPage = () => {
-  const { data, nextPage, prevPage, isLoading } = useGetCollections();
+  const { data, nextPage, prevPage, isLoading, startInclusive } = useGetCollections();
 
   return (
     <>
       <div>{isLoading && "loading"}</div>
-      <button disabled={isLoading} onClick={prevPage}>
+      <button disabled={isLoading || !startInclusive} onClick={prevPage}>
         Prev
       </button>
       <button disabled={isLoading} onClick={nextPage}>

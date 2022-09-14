@@ -1,11 +1,12 @@
 import React from 'react';
 const step = 30
-export const useGetCollections = () => {
+export const useGetCollection = (nftFilterString) => {
   const [data, setData ] = React.useState([])
   const [isLoading, setLoading] = React.useState(false);
   const [startInclusive, setStart] = React.useState(0);
   const [endExclusive, setEnd] = React.useState(step);
-  const endpoint = `http://localhost:8010/proxy/api/nft/collections_page?startInclusive=${startInclusive}&endExclusive=${endExclusive}`;
+  const nftFilterString = 'Bored Ape Yacht Club'
+  const endpoint = `http://localhost:8010/proxy/api/nft/nfts_filtered?startInclusive=${startInclusive}&endExclusive=${endExclusive}&nft_filter_string=${nftFilterString}`;
   
   const nextPage = () => {
     setStart(endExclusive)
