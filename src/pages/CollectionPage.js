@@ -1,3 +1,4 @@
+import { Button, Typography } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router";
 import { Gallery } from "../components/Gallery/Gallery";
@@ -10,16 +11,16 @@ export const CollectionPage = () => {
   const { data, nextPage, prevPage, isLoading, startInclusive } =
     useGetCollection(params.collectionName);
   return (
-    <>
-      {params.collectioName}
+    <div>
+      <Typography variant='h4'>{params.collectionName}</Typography>
       <div>{isLoading && "loading"}</div>
-      <button disabled={isLoading || !startInclusive} onClick={prevPage}>
+      <Button disabled={isLoading || !startInclusive} onClick={prevPage}>
         Prev
-      </button>
-      <button disabled={isLoading} onClick={nextPage}>
+      </Button>
+      <Button disabled={isLoading} onClick={nextPage}>
         next
-      </button>
+      </Button>
       {!isLoading && <Gallery data={data} GalleryItemWrapper={Nft} />}
-    </>
+    </div>
   );
 };
