@@ -24,7 +24,6 @@ export const useGetCollections = (collectionType) => {
         return res.json()
       }
     }).then((data) => {
-      console.log('getting data', data)
       setData(data?.result?.collections)
       setTotal(data?.result?.count)
       setLoading(false)
