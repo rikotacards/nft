@@ -1,20 +1,23 @@
+import { Card, CardActionArea, CardMedia, Typography } from "@mui/material";
 import React from "react";
 
 export const Nft = (props) => {
   const { name, description, imageUrl } = props;
   return (
-    <div style={{ border: "1px solid black" }}>
-      <div>
-        <div>name:</div>
-        <div>{name}</div>
-      </div>
-      <div>
-        <img alt={name} style={{ maxWidth: "100px" }} src={imageUrl} />
-      </div>
-      <div>
-        <div>desc:</div>
-        <div>{description}</div>
-      </div>
-    </div>
+    <Card sx={{maxWidth: "200px", width: "100%"}}>
+      <CardActionArea>
+        <CardMedia component="img" height="140" image={imageUrl} />
+        <div>
+          <div>
+            <Typography variant='caption'>{name}</Typography>
+          </div>
+        </div>
+
+        <div>
+          <div>desc:</div>
+          <div>{description}</div>
+        </div>
+      </CardActionArea>
+    </Card>
   );
 };
